@@ -76,4 +76,14 @@
             </if>
         </trim>
     </insert>
+
+    <select id="pageQuery" resultType="com.sky.entity.Employee">
+        select * from employee
+        <where>
+        <if test="name != null">
+            and name like concat('%',#{name},'%')
+        </if>
+        </where>
+        ORDER BY create_time desc
+    </select>
 </mapper>
